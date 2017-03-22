@@ -65,7 +65,7 @@ y1 = sim(net1,t); % run the network with input t, testing set
 
 % use permuted input
 N_samples = size(t,2);
-rnd = rand(N_samples);
+rnd = rand(N_samples);  % rnd is N*N 
 [rnd_sort,ind] = sort(rnd);
 % tp = permute(t,ind);
 % fp = permute(f,ind);
