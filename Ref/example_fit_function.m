@@ -32,12 +32,15 @@
 %       T = [0 1 2 3 4 3 2 1 2 3 4];
 
 % example of functional approximation
+clear; close all; 
+
 dt = 0.001;  % sampling interval
 t = 0:dt:1;  % input times
 N_samples = size(t,2);  % number of total samples
 percent_train = 5; % percent samples of total to use for training
 N_train = fix(N_samples*percent_train/100); % number of training samples
-f = 2*cos(2*pi*3*t);  % complete function to be fitted
+% f = 2*cos(2*pi*3*t);  % complete function to be fitted
+f = sin(2*pi*2.5*t + pi/4);
 S = [5];  % number of neurons in hidden layer
 TF = {'tansig','purelin'}; % activation functions for each layer
 	% second function is for output layer
