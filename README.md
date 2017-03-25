@@ -10,3 +10,6 @@ halfmoon problem with neural network toolbox(dist = 5.0, width =6, radius = 10)
 
 ### Q3
 approximate function $f(t) = sin(2\pi)$
+
+### Q6
+using matlab to solve the XOR problem

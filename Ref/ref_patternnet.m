@@ -9,6 +9,6 @@ perf = perform(net,t,y);
 classes = vec2ind(y);
 
 
-net.layers{1}.transferFcn 
-net.layers{2}.transferFcn 
-net.layers{3}.transferFcn 
+net.layers{1}.transferFcn
+net.layers{2}.transferFcn
+
