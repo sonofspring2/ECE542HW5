@@ -5,9 +5,10 @@ clear; close all;
 
 %%% set repeat parameters
 Repeat = 1;
-Config_number = 2;
-config_hidden_number = [5,20];
-
+% Config_number = 2;
+% config_hidden_number = [5,20];
+config_hidden_number = [20];
+Config_number= size(config_hidden_number);
 for config = 1:Config_number,
   plot_param = true;
   for i=1:Repeat,
@@ -76,7 +77,7 @@ for config = 1:Config_number,
     title(s_title);
     xlabel('x');
     ylabel('y');
-    s_filename = sprintf('Q3_hidden_number_%d, %d.png',hidden_numbers,i);
+    s_filename = sprintf('Q3_hidden_number_%d_%d.png',hidden_numbers,i);
     saveas(gcf,s_filename);
 
     %plot learning curve
@@ -90,7 +91,7 @@ for config = 1:Config_number,
     title(s_title);
     s_filename = sprintf('Q3_hidden_number_learing_curve_%d.png', hidden_numbers,i);
     saveas(gcf,s_filename);
-
+    close all; 
 
     %%% print out statistics
     if plot_param

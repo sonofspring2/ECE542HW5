@@ -1,0 +1,168 @@
+\documentclass{article}
+
+\usepackage{float}
+\usepackage{caption}
+\captionsetup{width=0.7\textwidth}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{longtable}
+
+\usepackage{booktabs}
+
+\usepackage{csvsimple}
+\usepackage{subcaption}
+
+
+\newcommand{\myfigure}[3]{
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{#1}
+		\caption{#2}
+		\label{#3}
+	\end{figure}
+}
+%		\begin{table}[H]
+%	\centering
+%	\csvautobooktabular{2_1.txt}
+%	\caption{results of halfmoon dataset}
+%	\label{tab:halfmoon_2_1}
+%\end{table}
+\newcommand{\mytable}[3]{
+	\begin{table}[H]
+		\centering
+		\csvautobooktabular{#1}
+		\caption{#2}
+		\label{#3}
+	\end{table}
+}
+
+\newcommand{\bmatFour}[4]{%
+	\begin{bmatrix} #1 & #2 \\ #3 & #4\end{bmatrix}
+}
+
+
+\newcommand{\bmatTwo}[2]{%
+	\begin{bmatrix} #1 & #2 \end{bmatrix}
+}
+
+\lhead{M.D.}
+\rhead{mdai3}
+
+
+\title{HW5 ECE542}
+\author{Ming Dai \\
+	unityID: mdai3\\
+}
+
+\begin{document}
+	\maketitle
+
+  \newpage
+  \section*{Q1}
+
+	\newpage
+  \section*{Q2}
+	\textbf{data set setting:} \\
+	dist = 5.0, width = 6, radius =10 \\
+	train samples = 2000, test samples = 2000  \\
+
+
+	\noindent \textbf{experiments}
+		\begin{itemize}
+			\item training method
+				\begin{itemize}
+					\item gradient descent
+					\item conjugate descent
+					\item Levenverg-Marquart
+				\end{itemize}
+			\item hidden neuron numbers
+				\begin{itemize}
+					\item 5
+					\item 20
+				\end{itemize}
+		\end{itemize}
+
+	\subsection*{Result}
+		\begin{itemize}
+			\item testing error
+			\item training time ( both epochs and real clock time)
+			\item Repeat measure time = 5
+			\item convergence criterion
+		\end{itemize}
+
+
+
+	\newpage
+  \section*{Q3}
+		\textbf{Repeat mearsure number = 5}
+		\subsection*{(a)}
+			\textbf{hidden number =5}
+			\subsubsection*{plot:}
+			\myfigure{Q3_hidden_number_5_1.png}{hidden number =5}{Q3a}
+			\subsubsection*{convergence and termination criteria:}
+			The gradient is less than the threshold 1e-7.
+
+		\subsection*{(b)}
+			\textbf{hidden number =20}
+			\subsubsection*{plot:}
+			\myfigure{Q3_hidden_number_20_1.png}{hidden number =20}{Q3b}
+
+			\subsubsection*{convergence and termination criteria:}
+			Reach the gaol of minimum mse of the \textbf{training} error.
+
+		\subsection*{(c) Comment}
+			Apparently, with more hidden neurons, the fitting of the sin function
+			is better. And with more training samples, the training error will be
+			smaller , but the testing error may be larger due to the overffiting effect.
+			
+			So when the training sample is not enough, increase the complexity of model can not always give us a better result. 
+
+	\newpage
+  \section*{Q4}
+
+	\newpage
+  \section*{Q5}
+
+	\newpage
+	\section*{Q6}
+
+	\newpage
+  \section*{Q7}
+
+
+
+\end{document}
