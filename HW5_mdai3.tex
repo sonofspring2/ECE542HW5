@@ -50,7 +50,7 @@
 \newcommand{\myfigure}[3]{
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\textwidth]{#1}
+		\includegraphics[width=0.6\textwidth]{#1}
 		\caption{#2}
 		\label{#3}
 	\end{figure}
@@ -132,17 +132,36 @@
 		\subsection*{(a)}
 			\textbf{hidden number =5}
 			\subsubsection*{plot:}
-			\myfigure{Q3_hidden_number_5_1.png}{hidden number =5}{Q3a}
-			\subsubsection*{convergence and termination criteria:}
-			The gradient is less than the threshold 1e-7.
+			\myfigure{Q3_fit_5_lm.png}{hidden number =5, trainFcn = trainlm}{Q3a}
+			\myfigure{Q3_perf_5_lm.png}{hidden number =5, trainFcn = trainlm}{Q3a}
+
+
+			\myfigure{Q3_fit_5_gd.png}{hidden number =5, trainFcn = traingd}{Q3a}
+			\myfigure{Q3_perf_5_gd.png}{hidden number =5, trainFcn = traingd}{Q3a}
+
+
+			\myfigure{Q3_fit_5_cgf.png}{hidden number =5, trainFcn = traingcf}{Q3a}
+			\myfigure{Q3_perf_5_cgf.png}{hidden number =5, trainFcn = traingcf}{Q3a}
+
+
+			\mytable{Q3_5.csv}{hidden number =5}{arg3}
 
 		\subsection*{(b)}
 			\textbf{hidden number =20}
 			\subsubsection*{plot:}
-			\myfigure{Q3_hidden_number_20_1.png}{hidden number =20}{Q3b}
-
-			\subsubsection*{convergence and termination criteria:}
-			Reach the gaol of minimum mse of the \textbf{training} error.
+			\myfigure{Q3_fit_20_lm.png}{hidden number =20, trainFcn = trainlm}{Q3a}
+			\myfigure{Q3_perf_20_lm.png}{hidden number =20, trainFcn = trainlm}{Q3a}
+			
+			
+			\myfigure{Q3_fit_20_gd.png}{hidden number =20, trainFcn = traingd}{Q3a}
+			\myfigure{Q3_perf_20_gd.png}{hidden number =20, trainFcn = traingd}{Q3a}
+			
+			
+			\myfigure{Q3_fit_20_cgf.png}{hidden number =20, trainFcn = traingcf}{Q3a}
+			\myfigure{Q3_perf_20_cgf.png}{hidden number =20, trainFcn = traingcf}{Q3a}
+			
+			
+			\mytable{Q3_20.csv}{hidden number =20}{arg3}
 
 		\subsection*{(c) Comment}
 			Apparently, with more hidden neurons, the fitting of the sin function
