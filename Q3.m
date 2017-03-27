@@ -4,11 +4,11 @@
 clear; close all;
 
 %%% set repeat parameters
-Repeat = 1;
+Repeat = 5;
 % Config_number = 2;
 % config_hidden_number = [5,20];
 config_hidden_number = [20];
-Config_number= size(config_hidden_number);
+Config_number= size(config_hidden_number, 2);
 for config = 1:Config_number,
   plot_param = true;
   for i=1:Repeat,
@@ -47,10 +47,15 @@ for config = 1:Config_number,
     net = newff(train_t, train_f, hidden_numbers, act_functions);
 
 
+    %%% set trainFun 
+%     net.trainFcn = 'traincgf'; % gradient decent  
+    
     %%% set training parameters
-    net.trainParam.epochs = 100; % set max number of epochs
+    net.trainParam.epochs = 20000; % set max number of epochs
     net.trainParam.goal = 10^-6;
-    net.trainParam.lr = 0.01; %learning rate
+    
+%     net.trainParam.lr = 0.01; %learning rate
+    net.trainParam.lr = 0.1; %learning rate
     net.trainParam.mc = 0.0; %momentum parameter
     net.trainParam.max_fail = 10^8;  % number of validation failures
 
@@ -66,7 +71,7 @@ for config = 1:Config_number,
 
 
     %%%plot result
-    figure(1);
+    figure();
     box on;
     scatter(train_t,train_f,30,'k');
     hold on;
@@ -78,10 +83,10 @@ for config = 1:Config_number,
     xlabel('x');
     ylabel('y');
     s_filename = sprintf('Q3_hidden_number_%d_%d.png',hidden_numbers,i);
-    saveas(gcf,s_filename);
+%     saveas(gcf,s_filename);
 
     %plot learning curve
-    figure(2);
+    figure();
     box on ;
     n1 = 1:size(tr1.perf, 2);
     semilogy(n1,tr1.perf,'r');
@@ -90,8 +95,8 @@ for config = 1:Config_number,
     s_title = sprintf('perf(MSE) as function of epoch.hiddenNumbers = %d ', hidden_numbers);
     title(s_title);
     s_filename = sprintf('Q3_hidden_number_learing_curve_%d.png', hidden_numbers,i);
-    saveas(gcf,s_filename);
-    close all; 
+%     saveas(gcf,s_filename);
+%     close all; 
 
     %%% print out statistics
     if plot_param

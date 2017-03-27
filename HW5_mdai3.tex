@@ -55,6 +55,16 @@
 		\label{#3}
 	\end{figure}
 }
+\newcommand{\myfigureTwo}[4]{
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=#4\textwidth]{#1}
+		\caption{#2}
+		\label{#3}
+	\end{figure}
+}
+
+
 %		\begin{table}[H]
 %	\centering
 %	\csvautobooktabular{2_1.txt}
@@ -93,7 +103,7 @@
 
   \newpage
   \section*{Q1}
-
+	\myfigureTwo{Q1.png}{Q1}{arg3}{1}
 	\newpage
   \section*{Q2}
 	\textbf{data set setting:} \\
@@ -123,7 +133,8 @@
 			\item Repeat measure time = 5
 			\item convergence criterion
 		\end{itemize}
-
+		\mytable{Q2_5.csv}{hidden number =5}{arg3}
+		\mytable{Q2_20.csv}{hidden number =20}{arg3}
 
 
 	\newpage
@@ -151,37 +162,124 @@
 			\subsubsection*{plot:}
 			\myfigure{Q3_fit_20_lm.png}{hidden number =20, trainFcn = trainlm}{Q3a}
 			\myfigure{Q3_perf_20_lm.png}{hidden number =20, trainFcn = trainlm}{Q3a}
-			
-			
+
+
 			\myfigure{Q3_fit_20_gd.png}{hidden number =20, trainFcn = traingd}{Q3a}
 			\myfigure{Q3_perf_20_gd.png}{hidden number =20, trainFcn = traingd}{Q3a}
-			
-			
+
+
 			\myfigure{Q3_fit_20_cgf.png}{hidden number =20, trainFcn = traingcf}{Q3a}
 			\myfigure{Q3_perf_20_cgf.png}{hidden number =20, trainFcn = traingcf}{Q3a}
-			
-			
+
+
 			\mytable{Q3_20.csv}{hidden number =20}{arg3}
 
 		\subsection*{(c) Comment}
 			Apparently, with more hidden neurons, the fitting of the sin function
 			is better. And with more training samples, the training error will be
 			smaller , but the testing error may be larger due to the overffiting effect.
-			
-			So when the training sample is not enough, increase the complexity of model can not always give us a better result. 
+
+			So when the training sample is not enough, increase the complexity of model can not always give us a better result.
 
 	\newpage
   \section*{Q4}
-
+	\subsection*{(a)}
+		Clearly, here the minimum value of K should be no greater than 4, since 4 is the sample number. 
+		And K should also be larger than 1 if we transform the data using radial function. 
+		So try K =2. 
+		And one possible solution is 
+		\[
+			\phi_1 = exp(-x^2),
+			\phi_2 = exp(-(x-2)^2)
+		\]
+		
+		$x = [0,2,1,3]^T $ will be transformed into: 
+		$$
+		\begin{bmatrix} 
+		1	& 0.0183 \\
+		0.0183	& 1 \\
+		0.368	& 0.368\\
+		1.234e-4	& 0.368
+		\end{bmatrix}
+		$$
+	
+		The transformed data points and boundary is as follows:
+		\myfigureTwo{Q4.jpg}{K=2}{arg3}{1}	
+		As the figure shows, now the data can be separate by line. 
+		
+		And the boundary point in the original 1D space is  
+		$ 0.727 ,1.273, 2.515$. This was searched by matlab. 
+		
+	\subsection*{(b)}
+	Here, I can find when K=3, the boundary has no bias term in the transformed space. 
+	Chosen radical functions: 
+	\[
+	\phi_1 = exp(-x^2),
+	\phi_2 = exp(-(x-2)^2), 
+	\phi_3 = exp(-(x-1)^2/100), 
+	\]
+		$x = [0,2,1,3]^T $ will be transformed into: 
+		$$x2 = 
+		\begin{bmatrix} 
+    1.0000   & 0.0183  &  0.9900\\
+	0.0183   & 1.0000  &  0.9900\\
+	0.3679   & 0.3679  &  1.0000\\
+	0.0001   & 0.3679  &  0.9608\\
+		\end{bmatrix}
+		$$	
+	
+	We can choose $w = [1,1,-1]^T$, without bias term, 
+	$$
+	x2*w =  
+	\begin{bmatrix} 
+        0.0283 \\
+	    0.0283 \\
+	   -0.2642 \\
+	   -0.5928 \\
+	\end{bmatrix}
+	$$ 
+	And 
+	$$
+	sign(x2*w) = 
+	\begin{bmatrix} 
+       1\\
+	   1\\
+	  -1\\
+	  -1\\
+	\end{bmatrix}
+	$$
+	Here the boundary point is $0.242, 1.788, 2.182$, which were also searched by matlab. 
+	
 	\newpage
   \section*{Q5}
+  	\myfigureTwo{Q5.png}{Q5}{arg3}{1}	
 
 	\newpage
 	\section*{Q6}
+	During the training, I disabled the validation and test dataset since here the number of training sample is so small (only 4).
 
+	\subsection*{two hidden nuerons}
+	 two typical plots
+	\myfigure{Q6_2_color_1.png}{hidden number =2,trainFcn = trainlm}{Q3a}
+	\myfigure{Q6_2_perf_1.png}{hidden number =2,trainFcn = trainlm}{Q3a}
+
+	\myfigure{Q6_2_color_2.png}{hidden number =2,trainFcn = trainlm}{Q3a}
+	\myfigure{Q6_2_perf_2.png}{hidden number =2,trainFcn = trainlm}{Q3a}
+
+
+	\subsection*{four hidden nuerons}
+	\myfigure{Q6_4_color_1.png}{hidden number =4,trainFcn = trainlm}{Q3a}
+	\myfigure{Q6_4_perf_1.png}{hidden number =4,trainFcn = trainlm}{Q3a}
+
+	\myfigure{Q6_4_color_2.png}{hidden number =4,trainFcn = trainlm}{Q3a}
+	\myfigure{Q6_4_perf_2.png}{hidden number =4,trainFcn = trainlm}{Q3a}	
+
+	\subsection*{Comment}
+	Similar with MLP　in the hw4, although 2 hidden neuron is enough, and the boundary of 4 hidden neurons may be similar to the one of 2 hidden neurons, we can not delete the some of the weights of the 4 hidden neurons. 
+	
 	\newpage
   \section*{Q7}
-
+  	\myfigureTwo{Q7.png}{Q7}{arg3}{1}
 
 
 \end{document}
